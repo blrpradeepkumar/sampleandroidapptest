@@ -6,9 +6,15 @@ import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
 import com.amazon.utilities.ExcelReader;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
@@ -21,7 +27,8 @@ public class BaseClass {
 	public static AppiumDriverLocalService service;
 	public static Logger log = Logger.getLogger("devpinoyLogger");
 	public static ExcelReader excel = new ExcelReader(
-			System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\testdata.xlsx");
+			System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\Testdata.xlsx");
+	public static WebDriverWait wait;
 
 	public static AndroidDriver<AndroidElement> initializeCapabilities() {
 
@@ -47,6 +54,7 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 		driver.manage().timeouts().implicitlyWait(Constants.implicitWait, TimeUnit.SECONDS);
+		wait = new WebDriverWait(driver,Constants.explicitWait);
 		return driver;
 
 	}
@@ -84,5 +92,18 @@ public class BaseClass {
 		return isAppiumServerRunning;
 	}
 	
+	@BeforeSuite
+	public void initialize() {
+
+		service = startAppiumServer();
+		driver = initializeCapabilities();
+
+	}
+	
+	@AfterSuite
+	public void stopTheServer() {
+
+		stopAppiumServer();
+	}
 	
 }

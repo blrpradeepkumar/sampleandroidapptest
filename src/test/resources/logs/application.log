@@ -1,0 +1,13 @@
+21/05/2020 01:06:02 devpinoyLogger Application found at locationE:\Pradeeps-Workspace\androidapp\src\test\resources\application
+21/05/2020 01:06:03 devpinoyLogger The device name is emulator-5554
+21/05/2020 01:06:03 devpinoyLogger The orientation is : PORTRAIT
+21/05/2020 01:06:46 devpinoyLogger Application launched
+21/05/2020 01:06:46 devpinoyLogger The test execution has started : launchingApplication
+21/05/2020 01:06:47 devpinoyLogger On username prompt page
+21/05/2020 01:06:52 devpinoyLogger Username entered is : sample@abc.com
+21/05/2020 01:06:52 devpinoyLogger The test execution has started : userNamePage
+21/05/2020 01:06:52 devpinoyLogger On password prompt page
+21/05/2020 01:07:53 devpinoyLogger The test script has failed : passwordPage , Capturing screenshot
+21/05/2020 01:07:53 devpinoyLogger The test script has been skipped : homePageValidation
+21/05/2020 01:07:53 devpinoyLogger The test script has been skipped : searchForProduct
+21/05/2020 01:07:53 devpinoyLogger The test script has been skipped : selectedProduct

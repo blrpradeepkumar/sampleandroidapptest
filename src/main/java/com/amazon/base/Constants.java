@@ -7,6 +7,8 @@ public class Constants {
 	
 	public static final long implicitWait = 60;
 	
+	public static final long explicitWait = 15;
+	
 	public static final String appiumUrl = "http://127.0.0.1:4723/wd/hub";
 	
 	public static final String deviceName = "emulator-5554";
