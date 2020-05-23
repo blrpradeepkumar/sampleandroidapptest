@@ -1,8 +1,5 @@
 package com.amazon.utilities;
 
-import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
-import static io.appium.java_client.touch.TapOptions.tapOptions;
-import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofSeconds;
 import java.io.File;
 import java.io.IOException;
@@ -12,11 +9,18 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import com.amazon.base.BaseClass;
+import com.relevantcodes.extentreports.LogStatus;
+import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
+import static io.appium.java_client.touch.TapOptions.tapOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 
 public class Utilities extends BaseClass {
@@ -66,6 +70,7 @@ public class Utilities extends BaseClass {
 	public static void tapOnElement(WebElement elementToTap) {
 		TouchAction touch = new TouchAction(driver);
 		touch.tap(tapOptions().withElement(element(elementToTap))).perform();
+		test.log(LogStatus.INFO, "Tapped on element : " + elementToTap);
 	}
 
 	public static WebElement getRandomElement(List<WebElement> elements) {
@@ -96,7 +101,5 @@ public class Utilities extends BaseClass {
 				+ "new UiSelector().textContains(\"" + textToSearch + "\").instance(0))";
 
 	}
-	
-	
 
 }

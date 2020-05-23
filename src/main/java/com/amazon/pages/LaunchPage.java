@@ -15,40 +15,80 @@ public class LaunchPage {
 	//Launch application page
 	
 	@AndroidFindBy(xpath = "//*[contains(@text,'Already a customer')]")
-	public WebElement alreadyACustomerButton;
+	private WebElement alreadyACustomerButton;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='New to Amazon.in? Create an account']")
-	public WebElement createAnAccountButton;
+	private WebElement createAnAccountButton;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Skip sign in']")
-	public WebElement skipSignInButton;
+	private WebElement skipSignInButton;
+	
 	
 	@AndroidFindBy(xpath = "//*[@text='Create account. New to Amazon?']")
-	public WebElement createAccountRadioButton;
+	private WebElement createAccountRadioButton;
 	
 	//Page to enter username
 	@AndroidFindBy(xpath = "//*[@text='Login. Already a customer?']")
-	public WebElement loginAlreadyACustomerRadioButton;
+	private WebElement loginAlreadyACustomerRadioButton;
 	
 	@AndroidFindBy(className = "android.widget.EditText")
-	public WebElement emailOrPhoneTextBox;
+	private WebElement emailOrPhoneTextBox;
 	
 	@AndroidFindBy(xpath = "//*[@text='Continue']")
-	public WebElement continueButton;
+	private WebElement continueButton;
 
 	//Page to enter password
 	@AndroidFindBy(className="android.widget.EditText")
-	public WebElement passwordTextBox;
+	private WebElement passwordTextBox;
 	
 	@AndroidFindBy(xpath="//android.widget.Button[@resource-id='signInSubmit']")
-	public WebElement loginButton;
+	private WebElement loginButton;
 	
 	@AndroidFindBy(xpath = "//android.widget.CheckBox[@text='Show password']")
-	public WebElement showPasswordCheckBox;
-	
+	private WebElement showPasswordCheckBox;
 	
 	public LaunchPage(AndroidDriver<AndroidElement> driver) {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+	
+	public WebElement getAlreadyACustomerButton() {
+		return alreadyACustomerButton;
+	}
+
+	public WebElement getCreateAnAccountButton() {
+		return createAnAccountButton;
+	}
+
+	public WebElement getSkipSignInButton() {
+		return skipSignInButton;
+	}
+
+	public WebElement getCreateAccountRadioButton() {
+		return createAccountRadioButton;
+	}
+
+	public WebElement getLoginAlreadyACustomerRadioButton() {
+		return loginAlreadyACustomerRadioButton;
+	}
+
+	public WebElement getEmailOrPhoneTextBox() {
+		return emailOrPhoneTextBox;
+	}
+
+	public WebElement getContinueButton() {
+		return continueButton;
+	}
+
+	public WebElement getPasswordTextBox() {
+		return passwordTextBox;
+	}
+
+	public WebElement getLoginButton() {
+		return loginButton;
+	}
+
+	public WebElement getShowPasswordCheckBox() {
+		return showPasswordCheckBox;
 	}
 
 	public void clickOncreateAnAccountButton() {
@@ -64,12 +104,12 @@ public class LaunchPage {
 	}
 
 	public void enterUsername(String userName) {
-		Utilities.tapOnElement(emailOrPhoneTextBox);
-		emailOrPhoneTextBox.sendKeys(userName);
+		Utilities.tapOnElement(getEmailOrPhoneTextBox());
+		getEmailOrPhoneTextBox().sendKeys(userName);
 	}
 	
 	public void clickOnLoginAlreadyACustomerRadioButton() {
-		loginAlreadyACustomerRadioButton.click();
+		getLoginAlreadyACustomerRadioButton().click();
 	}
 	
 	public void clickOnContinueButton() {
@@ -77,14 +117,15 @@ public class LaunchPage {
 	}
 	
 	public void enterPassword(String password) {
-		Utilities.tapOnElement(passwordTextBox);
-		passwordTextBox.sendKeys(password);
+		Utilities.tapOnElement(getPasswordTextBox());
+		getPasswordTextBox().sendKeys(password);
 		
 	}
 	
-	public void clickLoginButton() {
+	public HomePage clickLoginButton(AndroidDriver<AndroidElement> driver) {
 		
 		Utilities.tapOnElement(loginButton);
-	}	
+		return new HomePage(driver);
+	}
 
 }

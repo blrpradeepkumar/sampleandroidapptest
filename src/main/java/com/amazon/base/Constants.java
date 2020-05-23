@@ -11,7 +11,7 @@ public class Constants {
 	
 	public static final String appiumUrl = "http://127.0.0.1:4723/wd/hub";
 	
-	public static final String deviceName = "emulator-5554";
+	public static final String deviceName = "TA9330EAE1";//emulator-5554
 	
 	public static final String automationName = "uiautomator2";
 	

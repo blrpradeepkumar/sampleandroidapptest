@@ -34,6 +34,22 @@ public class SearchPage {
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Cart']")
 	private WebElement cartButton;
 
+	public List<WebElement> getListOfProducts() {
+		return listOfProducts;
+	}
+
+	public WebElement getSeeAllResultsLink() {
+		return seeAllResultsLink;
+	}
+
+	public WebElement getAddToCartButton() {
+		return addToCartButton;
+	}
+
+	public WebElement getCartButton() {
+		return cartButton;
+	}
+
 	public SearchPage(AndroidDriver<AndroidElement> driver) {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
